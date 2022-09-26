@@ -1,8 +1,8 @@
 {
-  "name": "@ychebotaev/trie",
+  "name": "@ychebotaev/trigrams",
   "version": "0.2.0",
-  "description": "A prefix tree class",
-  "main": "dist/trie.es.js",
+  "description": "A data structure to store words by its trigrams",
+  "main": "dist/trigrams.es.js",
   "files": [
     "dist/index.js"
   ],
@@ -12,17 +12,15 @@
     "prepare": "husky install"
   },
   "keywords": [
-    "trie",
-    "prefix tree",
-    "digital tree"
+    "trigrams"
   ],
   "author": "YChebotaev <yury.79120345101@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://gihub.com/ychebotaev/trie"
+    "url": "https://gihub.com/ychebotaev/trigrams"
   },
   "bugs": {
-    "url": "https://gihub.com/ychebotaev/trie/issues",
+    "url": "https://gihub.com/ychebotaev/trigrams/issues",
     "email": "yury.79120345101@gmail.com"
   },
   "license": "ISC",

@@ -7,6 +7,18 @@ export class Trigrams {
       .map((_, i) => word.slice(i, i + 3))
   }
 
+  find (trigrams: string | string[]): string[] {
+    const foundWords: string[] = []
+
+    for (const trigram of Array.isArray(trigrams) ? trigrams : [trigrams]) {
+      const words = Array.from(this.#index[trigram]?.values() ?? [])
+
+      foundWords.push(...words)
+    }
+
+    return foundWords
+  }
+
   has (word: string): boolean {
     const trigrams = this.getTrigrams(word)
 
