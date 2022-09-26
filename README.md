@@ -1,52 +1,30 @@
-trie
-====
+trigrams
+========
 
-A modern, generic trie ([prefix tree](https://en.wikipedia.org/wiki/Trie)) data structure on TypeScript
-
-Support anything (including objects) as a prefix
-
-Initally built as function memoization cache but may be used anyhow
+A data structure to store words by it's trigrams
 
 Usage
 -----
 
 ```tsx
-import { Trie } from '@ychebotaev/trie'
+import { Trigrams } from '@ychebotaev/trigrams'
 
-const t = new Trie([
-  [['a', 'b', 'c'], 1], // Initialize from pairs (optional)
-])
+const t = new Trigrams()
 
-t.insert(['d', 'e', 'f'], 2)
+t.add('hello')
+t.add('world')
 
-t.find(['a', 'b', 'c']) // => 1
-t.find(['d', 'e', 'f']) // => 1
+t.has('hello') // => true
+t.has('world') // => true
 
-t.delete(['d'])
+t.delete('world')
 
-t.find(['d', 'e', 'f']) // => null
-```
+t.has('world') // => false
 
-### As a function memoization cache (example)
+t.keys() // => ['hel', 'ell', 'llo']
+t.values() // => ['hello']
 
-```tsx
-import { Trie } from './Trie'
-
-export const memoize = <Params extends unknown[], Result, Fn = (...params: Params) => Result>(fn: Fn): Fn => {
-  const cache = new Trie<Params, Result>()
-
-  return (...params: Params): Result => {
-    const cachedResult = cache.find(params)
-
-    if (cachedResult) return cachedResult
-
-    const result = fn(...params) as Result
-
-    cache.insert(params, result)
-
-    return result
-  }
-}
+t.find('ell') // => ['hello']
 ```
 
 Contribution
